@@ -24,27 +24,36 @@ function get_notes(idx, scale_increments) {
     return notes;
 }
 
+function hide(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+function show(id) {
+    document.getElementById(id).style.display = "block";
+}
+
 function show_finger_indicators(idx, scale_increments) {
     var ids = ["C1", "CS1", "D1", "DS1", "E1", "F1", "FS1", "G1", "GS1", "A1", "AS1", "B1",
                "C2", "CS2", "D2", "DS2", "E2", "F2", "FS2"];
     var i;
     
     for (i = 0; i < ids.length; i++) {
-        $("#"+ids[i]).hide();
+        hide(ids[i]);
     }
     
     for (i = 0; i < scale_increments.length; i++) {
-        $("#"+ids[idx + scale_increments[i]]).show();
+        show(ids[idx + scale_increments[i]]);
     }
 }
 
 function showChord(_chord) {
     chord = parse_chord(_chord);
     document.title = "Chord " + _chord;
-    $("#chord_label").text("Chord " + _chord);
+    
+    document.getElementById("chord_label").innerHTML = "Chord " + _chord;
     var idx = all_notes.indexOf(chord.note);
     var notes = get_notes(idx, chord.scale);
-    $("#chord_notes").text(notes);
+    document.getElementById("chord_notes").innerHTML = notes.toString();
     show_finger_indicators(idx, chord.scale);
 }
 
