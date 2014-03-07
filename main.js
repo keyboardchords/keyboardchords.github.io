@@ -15,11 +15,11 @@ function parse_chord(chord) {
     return {scale: scale, note: note};
 }
 
-function get_notes(idx, scale_increments) {
+function get_notes(scale_increments) {
     var i, j;
     var notes = [];
     for (i = 0; i < scale_increments.length; i++) {
-        notes.push(all_notes[(idx + scale_increments[i]) % all_notes.length]);
+        notes.push(all_notes[(scale_increments[i]) % all_notes.length]);
     }
     return notes;
 }
@@ -32,9 +32,9 @@ function show(id) {
     document.getElementById(id).style.display = "block";
 }
 
-function show_finger_indicators(idx, scale_increments) {
+function show_finger_indicators(scale_increments) {
     var ids = ["C1", "CS1", "D1", "DS1", "E1", "F1", "FS1", "G1", "GS1", "A1", "AS1", "B1",
-               "C2", "CS2", "D2", "DS2", "E2", "F2", "FS2"];
+               "C2", "CS2", "D2", "DS2", "E2", "F2", "FS2", "G2", "GS2", "A2", "AS2", "B2"];
     var i;
     
     for (i = 0; i < ids.length; i++) {
@@ -42,19 +42,20 @@ function show_finger_indicators(idx, scale_increments) {
     }
     
     for (i = 0; i < scale_increments.length; i++) {
-        show(ids[idx + scale_increments[i]]);
+        show(ids[scale_increments[i]]);
     }
 }
 
 function showChord(_chord) {
-    chord = parse_chord(_chord);
+    chord = chordIdx(_chord)[1];
+    console.log(chord);
+    /*chord = parse_chord(_chord);*/
     document.title = "Chord " + _chord;
     
     document.getElementById("chord_label").innerHTML = "Chord " + _chord;
-    var idx = all_notes.indexOf(chord.note);
-    var notes = get_notes(idx, chord.scale);
+    var notes = get_notes(chord);
     document.getElementById("chord_notes").innerHTML = notes.toString();
-    show_finger_indicators(idx, chord.scale);
+    show_finger_indicators(chord);
 }
 
 function update_chord(evt) {
@@ -71,13 +72,19 @@ function update_chord(evt) {
     
     var chord_name_str = chord_root.options[chord_root.selectedIndex].text;
         
-    if (chord_sharp.checked && evt.target == chord_sharp) {
+    if (chord_sharp.checked && evt.target == chord_sharp
+        && chord_name_str != "B" && chord_name_str != "E") {
         chord_flat.checked = false;
         chord_name_str += "#";
+    } else {
+        chord_sharp.checked = false;
     }
-    if (chord_flat.checked && evt.target == chord_flat) {
+    if (chord_flat.checked && evt.target == chord_flat
+        && chord_name_str != "C" && chord_name_str != "F") {
         chord_sharp.checked = false;
         chord_name_str += "b";
+    } else {
+        chord_flat.checked = false;
     }
     
     if (chord_scale != "M") {
@@ -129,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
         
     document.getElementById("btnShowChord").addEventListener("click", function () {
-        alert(chordIdx(document.getElementById("chord_name").innerHTML))
         window.location.hash = document.getElementById("chord_name").innerHTML;
     });
     
