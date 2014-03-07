@@ -3,7 +3,7 @@
   "description": "Show the notes of each chord in the keyboard.",
   "launch_path": "/",
   "icons": {
-    "128": "/icon-128.png"
+    "128": "/icon_128.png"
   },
   "developer": {
     "name": "Igor Montagner",
