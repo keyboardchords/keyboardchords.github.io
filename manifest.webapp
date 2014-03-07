@@ -1,0 +1,13 @@
+{
+  "name": "Keyboard Chords",
+  "description": "Show the notes of each chord in the keyboard.",
+  "launch_path": "/",
+  "icons": {
+    "128": "/icon-128.png"
+  },
+  "developer": {
+    "name": "Igor Montagner",
+    "url": "http://www.conquestofsteel.co.uk"
+  },
+  "default_locale": "en"
+}
