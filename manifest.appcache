@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v7 - 2014-02-07
+# v8 - 2014-02-07
 # This is a comment.
 
 index.html
@@ -10,6 +10,8 @@ favicon.ico
 icons/icon_128.png
 icons/icon_256.png
 icons/icon_32.png
+icons/icon_60.png
+icons/icon_90.png
 icons/icon_16.png
 
 style/settings_icons.png
