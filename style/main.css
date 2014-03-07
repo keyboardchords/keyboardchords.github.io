@@ -1,0 +1,150 @@
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.column1 {
+    width: 300px;   
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.keyboard {
+    border: 1px solid black;
+    padding: 0px;
+    
+    margin-left: auto;
+    margin-right: auto;
+    
+    border-collapse: collapse;
+}
+
+.keyboard td, .keyboard tr {
+    padding: 0px;
+    margin: 0px;
+}
+
+.keyboard td.top {
+    background-color: white;
+    border-right: 1px solid black;
+}
+
+.keyboard td.bottom {    
+    background-color: white;
+    border-right: 1px solid black;
+}
+
+.keyboard td.black-notes {
+    background-color: black;
+}
+
+.finger-indicator { 
+    margin-left: auto;
+    margin-right: auto;
+    background-color: red;
+    
+    display: none;
+}
+
+#chord_notes {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+#btnShowChord {
+    float: right;
+}
+
+[data-role=content] {
+    font-size: 2rem;    
+}
+
+select {
+    font-size: 2.5rem;
+}
+
+#chord_name {
+    font-size: 4rem;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+#main select {
+    width: 50px;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+
+.two-column-table {
+    width: 100%;
+    vertical-align: middle; 
+}
+
+.two-column-table td:first-child {
+    text-align: left;
+}
+
+.two-column-table td:last-child {
+    text-align: right;
+}
+
+
+@media (max-width: 800px) {
+    .finger-indicator {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 0.25rem;
+    }
+    
+    .keyboard td.top {
+        width: 1.5rem;
+        height: 5rem;
+    }
+    
+    .keyboard td.bottom {
+        width: 3rem;
+        height: 4rem;
+    }
+}
+
+@media (min-width: 801px) {
+    .finger-indicator {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 0.75rem;
+    }
+    
+    .keyboard td.top {
+        width: 2rem;
+        height: 8rem;
+    }
+    
+    .keyboard td.bottom {
+        width: 4rem;
+        height: 6rem;
+    }
+}

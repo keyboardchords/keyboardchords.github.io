@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="chords.js"></script>
+	<script>
+	function gerarAcorde() {
+		chordString = document.getElementById("chord").value;
+		if(chordString) {
+			ret = chordIdx(chordString);
+			alert(ret);
+		}
+	}
+	</script>
+</head>
+<body>
+	<input type="text" id="chord">
+	<button onclick="gerarAcorde()">Gerar acorde!</button>
+	<table>
+		<tr>
+			<th>Símbolo</th>
+			<th>Significado</th>
+		</tr>
+		<tr>
+			<td>#</td>
+			<td>Sustenido</td>
+		</tr>
+		<tr>
+			<td>b</td>
+			<td>Bemol</td>
+		</tr>
+		<tr>
+			<td>m</td>
+			<td>Menor</td>
+		</tr>
+		<tr>
+			<td>o</td>
+			<td>Diminuto</td>
+		</tr>
+		<tr>
+			<td>+</td>
+			<td>Aumentado</td>
+		</tr>
+		<tr>
+			<td>NÚMERO</td>
+			<td>Extensão</td>
+		</tr>
+	</table>
+	<p>Exemplos: C#7+, Gbm9, Ao</p>
+</body>
+</html>
