@@ -1,11 +1,14 @@
 CACHE MANIFEST
-# v4 - 2014-02-07
+# v5 - 2014-02-07
 # This is a comment.
 
 index.html
 main.js
 chords.js
 chords_generator.js
+favicon.ico
+icon_128.png
+icon_16.png
 
 style/settings_icons.png
 style/settings_icons.css
