@@ -115,7 +115,7 @@ function changeView(view_id) {
         document.getElementById(view_id).style.display = "block";
         document.title = document.getElementById(view_id).getAttribute("data-title");
     }
-    ga('send', 'pageview', '/' + view_id);
+    ga('send', 'event', viewd_id, 'visited');
 }
 
 document.addEventListener("DOMContentLoaded", function () {
