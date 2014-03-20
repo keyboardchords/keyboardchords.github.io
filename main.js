@@ -48,7 +48,7 @@ function show_finger_indicators(scale_increments) {
 
 function showChord(_chord) {
     chord = chordIdx(_chord)[1];
-    console.log(chord);
+    //console.log(chord);
     /*chord = parse_chord(_chord);*/
     document.title = "Chord " + _chord;
     
@@ -97,6 +97,7 @@ function update_chord(evt) {
 }
 
 function changeView(view_id) {
+    if (view_id == "drawer") return;    
     var views = document.querySelectorAll("[data-role=page]");
     var unknown_view = true;
     var i;
@@ -117,6 +118,7 @@ function changeView(view_id) {
     }
     ga('send', 'event', view_id, 'visited');
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
     var hash = window.location.hash;

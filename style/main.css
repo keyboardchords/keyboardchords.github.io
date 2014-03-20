@@ -1,3 +1,13 @@
+[data-role=content], [data-role=page] {
+    background-color: white;
+    height: 100%;
+    position: relative;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+}
 
 .center {
     margin-left: auto;
@@ -146,5 +156,13 @@ header {
     .keyboard td.bottom {
         width: 4rem;
         height: 6rem;
+    }
+    
+    section[data-type="sidebar"] {
+        width: 30%;
+    }
+    
+    section[role="region"]:target {
+       transform: translateX(30%);
     }
 }

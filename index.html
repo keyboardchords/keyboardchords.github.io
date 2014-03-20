@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="style/settings_icons.css" />
 <link rel="stylesheet" href="style/media_icons.css" />
 <link rel="stylesheet" href="style/headers.css" />
+<link rel="stylesheet" href="style/drawer.css" />
 <link rel="stylesheet" href="style/lists.css" />
 <link rel="stylesheet" href="style/main.css" />
 <script src="chords.js"></script>
@@ -30,16 +31,17 @@
 </head>
 <body>
 <div data-role="page" data-title="Music chords" id="main">
-    <section role="region" class="skin-organic" data-role="header">
+    <section id="drawer" role="region" data-role="content" class="skin-organic">
         <header>
             <menu type="toolbar">
                 <a href="#about"><span class="icon settings-icon aboutphone">about</span></a>
             </menu>
+            <a href="#main"><span class="icon icon-menu">hide sidebar</span></a>
+            <a href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
             <h1>Music Chords</h1>   
         </header>
         
-    </section><!-- /header -->
-    <div data-role="content">
+        
         <section class="center column1">
             <div class="center-content">
                 <a id="chord_name" href="#">C</a>
@@ -100,7 +102,15 @@
             </fieldset>
             
         </section>
-    </div><!-- /content -->
+    </section><!-- /content -->
+    
+    <section data-type="sidebar">
+        <header>
+            <h1>bla bla bla</h1>
+        </header>
+        bla bla bla
+    </section>
+    
 </div><!-- /page -->
 
 <div data-role="page" id="chord">
