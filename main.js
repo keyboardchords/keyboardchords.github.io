@@ -29,7 +29,7 @@ function hide(id) {
 }
 
 function show(id) {
-    document.getElementById(id).style.display = "block";
+    document.getElementById(id).style.display = "inline-block";
 }
 
 function show_finger_indicators(scale_increments) {
@@ -48,8 +48,6 @@ function show_finger_indicators(scale_increments) {
 
 function showChord(_chord) {
     chord = chordIdx(_chord)[1];
-    //console.log(chord);
-    /*chord = parse_chord(_chord);*/
     document.title = "Chord " + _chord;
     
     document.getElementById("chord_label").innerHTML = "Chord " + _chord;
@@ -97,23 +95,37 @@ function update_chord(evt) {
 }
 
 function changeView(view_id) {
-    if (view_id == "drawer") return;    
+    if (view_id == "chord-of-the-day") return;
+    
+    if (document.body.clientWidth < 800) {
+        if (view_id == "drawer") 
+            document.getElementById('drawer').style.width = '';
+        else 
+            document.getElementById('drawer').style.width = '0px';
+    }
+    if (view_id == "drawer") {
+        /*document.getElementById('drawer').style.width = '';*/
+        document.querySelector('.menu-button').href = "javascript:history.go(-1);";
+        return;
+    } else {
+        /*document.getElementById('drawer').style.width = '0px';*/
+        document.querySelector('.menu-button').href = "#drawer";
+    }
     var views = document.querySelectorAll("[data-role=page]");
     var unknown_view = true;
     var i;
     
     for (i = 0; i < views.length; i++) {
         views[i].style.display = "none";
-        //console.log(views[i].id);
         if (views[i].id == view_id) {
             unknown_view = false;
         }
     }
     if (unknown_view) {
-        document.getElementById("chord").style.display = "block";
+        document.getElementById("chord").style.display = "inline-block";
         showChord(view_id);
     } else {
-        document.getElementById(view_id).style.display = "block";
+        document.getElementById(view_id).style.display = "inline-block";
         document.title = document.getElementById(view_id).getAttribute("data-title");
     }
     ga('send', 'event', view_id, 'visited');
@@ -141,6 +153,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("btnShowChord").addEventListener("click", function () {
         window.location.hash = document.getElementById("chord_name").innerHTML;
     });
+    
+    var rnd_chord = randomChord();
+    var chord_link = document.getElementById("today_chord");
+    chord_link.href = "#" + rnd_chord;
+    chord_link.innerHTML = rnd_chord;
     
     update_chord();
 });

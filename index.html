@@ -1,16 +1,17 @@
-<!doctype html>
-<html manifest="manifest.appcache">
+<!DOCTYPE html>
+<!--[if IE 9 ]> <html manifest="manifest.appcache" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]> <!--> <html manifest="manifest.appcache"> <!--<![endif]-->
 <head>
 <title>Music chords</title>
-<meta http-equiv="X-UA-Compatible" content="IE=9">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link type="image/x-icon" href="favicon.ico" rel="icon" />
 <link type="image/x-icon" href="favicon.ico" rel="shortcut icon" />
 <link rel="stylesheet" href="style/icons.css" />
+<link rel="stylesheet" href="style/drawer.css" />
 <link rel="stylesheet" href="style/settings_icons.css" />
 <link rel="stylesheet" href="style/media_icons.css" />
 <link rel="stylesheet" href="style/headers.css" />
-<link rel="stylesheet" href="style/drawer.css" />
 <link rel="stylesheet" href="style/lists.css" />
 <link rel="stylesheet" href="style/main.css" />
 <script src="chords.js"></script>
@@ -30,92 +31,94 @@
 
 </head>
 <body>
+    
+<div data-role="dialog" id="chord-of-the-day" data-width="30px">
+    <div class="bg"></div>
+    <div data-role="content">
+        <a href="#main" class="close"></a>
+        Chord of the day: <br><br><br>
+        <a id="today_chord"></a>
+    </div>
+</div>
+
 <div data-role="page" data-title="Music chords" id="main">
-    <section id="drawer" role="region" data-role="content" class="skin-organic">
+    <section role="region" class="skin-organic" data-role="header">
         <header>
             <menu type="toolbar">
                 <a href="#about"><span class="icon settings-icon aboutphone">about</span></a>
             </menu>
-            <a href="#main"><span class="icon icon-menu">hide sidebar</span></a>
-            <a href="#drawer"><span class="icon icon-menu">show sidebar</span></a>
+            <a href="#drawer" class="menu-button"><span class="icon icon-menu">show sidebar</span></a>
             <h1>Music Chords</h1>   
         </header>
-        
-        
-        <section class="center column1">
-            <div class="center-content">
-                <a id="chord_name" href="#">C</a>
-            </div>
-            <fieldset>
-                <legend>Configure chord:</legend>
-                <table class="two-column-table">
-                <tr>
-                    <td>Tone:</td>
-                    <td>
-                        <select id="chord_root">
-                            <option>C</option>
-                            <option>D</option>
-                            <option>E</option>
-                            <option>F</option>
-                            <option>G</option>
-                            <option>A</option>
-                            <option>B</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="chord_sharp" /> Sharp
-                    </td><td></td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" id="chord_flat" /> Flat
-                    </td><td></td>
-                </tr>
-                <tr>
-                    <td>Scale:</td>
-                    <td>
-                        <select id="chord_scale">
-                            <option>M</option>
-                            <option>m</option>
-                            <option>+</option>
-                            <option>o</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Extension:</td>
-                    <td>
-                        <select id="chord_ext">
-                            <option></option>
-                            <option>7</option>
-                            <option>6</option>
-                        </select>                        
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><br><button id="btnShowChord">Show</button></td>
-                </tr>
-            </table>
-            </fieldset>
-            
+    </section>
+    <section role="region" data-role="content" class="skin-organic">
+        <section class="center" style="width: 300px;">
+          <div class="center-content">
+              <a id="chord_name" href="#">C</a>
+          </div>
+          <fieldset>
+              <legend>Configure chord:</legend>
+              <table class="two-column-table">
+              <tr>
+                  <td>Tone:</td>
+                  <td>
+                      <select id="chord_root">
+                          <option>C</option>
+                          <option>D</option>
+                          <option>E</option>
+                          <option>F</option>
+                          <option>G</option>
+                          <option>A</option>
+                          <option>B</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <input type="checkbox" id="chord_sharp" /> Sharp
+                  </td><td></td>
+              </tr>
+              <tr>
+                  <td>
+                      <input type="checkbox" id="chord_flat" /> Flat
+                  </td><td></td>
+              </tr>
+              <tr>
+                  <td>Scale:</td>
+                  <td>
+                      <select id="chord_scale">
+                          <option>M</option>
+                          <option>m</option>
+                          <option>+</option>
+                          <option>o</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Extension:</td>
+                  <td>
+                      <select id="chord_ext">
+                          <option></option>
+                          <option>7</option>
+                          <option>6</option>
+                      </select>                        
+                  </td>
+              </tr>
+              <tr>
+                  <td></td>
+                  <td><br><button id="btnShowChord">Show</button></td>
+              </tr>
+          </table>
+          </fieldset>
+          
         </section>
     </section><!-- /content -->
-    
-    <section data-type="sidebar">
-        <header>
-            <h1>bla bla bla</h1>
-        </header>
-        bla bla bla
-    </section>
-    
-</div><!-- /page -->
-
-<div data-role="page" id="chord">
+</div><div data-role="page" id="chord">
     <section role="region" class="skin-organic" data-role="header">
         <header>
+            <menu type="toolbar">
+                <a href="#about"><span class="icon settings-icon aboutphone">about</span></a>
+            </menu>
             <a href="#"><span class="icon icon-back">back</span></a>
             <h1 id="chord_label">Chord </h1>
         </header>
@@ -165,9 +168,7 @@
             </table>
         </p>
     </div><!-- /content -->
-</div><!-- /page -->
-
-<div data-role="page" id="about" data-title="About">
+</div><div data-role="page" id="about" data-title="About">
     <section role="region" data-role="header" class="skin-organic">
         <header>
             <a href="#"><span class="icon icon-back">back</span></a>

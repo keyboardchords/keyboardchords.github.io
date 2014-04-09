@@ -1,7 +1,78 @@
+[data-role=page] {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+[data-role=dialog] {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+[data-role=dialog] .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;    
+    opacity: 0.5;
+}
+
+[data-role=dialog] [data-role=content] {
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 300px;
+    height: 150px;
+    margin-left: calc(50% - 150px);
+    top: calc(50% - 75px);
+    text-align: center;
+    position: absolute;
+    
+    background: white;
+    opacity: 1;
+}
+
+[data-role=dialog] a.close {
+    background-color: white;
+    background-image: url("headers/images/icons/organic/close.png");
+    border: 2px double;
+    border-radius: 45px;
+    border-color: black;
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    width: 30px;
+    height: 30px;
+    
+    
+    
+}
+
+[data-type=sidebar] {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+    height: 100%;
+    overflow-x: hidden;
+    background-color: gray;
+    transition: width 0.1s linear;
+}
+
 [data-role=content], [data-role=page] {
     background-color: white;
     height: 100%;
-    position: relative;
+}
+
+[data-role=content] {
+    margin-left: 15px;
 }
 
 html, body {
@@ -27,7 +98,7 @@ html, body {
 }
 
 .column1 {
-    width: 300px;   
+    width: 80%;   
 }
 
 html, body {
@@ -85,15 +156,25 @@ html {
     float: right;
 }
 
-[data-role=content] {
+[data-role=content], section {
     font-size: 2rem;    
+}
+
+#main [data-role=content] div {
+    text-align: center;
+}
+
+.drawer-bg {
+    background: white;
+    margin-top: -20px;
+    height: 100%;
 }
 
 select {
     font-size: 2.5rem;
 }
 
-#chord_name {
+#chord_name, #today_chord {
     font-size: 4rem;
     text-align: center;
     text-decoration: none;
@@ -139,6 +220,22 @@ header {
         width: 3rem;
         height: 4rem;
     }
+    
+    .menu-button {
+        display: block;
+    }
+    
+    [data-type=sidebar] {
+        width: 0px;
+    }
+    
+    [data-type=sidebar]:target {
+        width: 80%;
+    }
+    
+    [data-type=sidebar]:target ~ [data-role=page] {
+        margin-left: 80%;
+    }
 }
 
 @media (min-width: 801px) {
@@ -158,11 +255,28 @@ header {
         height: 6rem;
     }
     
-    section[data-type="sidebar"] {
+    [data-type=sidebar] {
         width: 30%;
     }
     
-    section[role="region"]:target {
-       transform: translateX(30%);
+    [data-type=sidebar] ~ [data-role=page] {
+        margin-left: 30%;
+        width: 70%;
+    }
+    
+    .menu-button {
+        display: none;
+    }
+    
+    [data-type=sidebar]:target {
+        width: 30%;
+    }
+    
+    [data-type=sidebar]:target ~ [data-role=page] {
+        margin-left: 30%;
+    }
+    
+    [data-role=dialog]:target {
+        display: block;
     }
 }
