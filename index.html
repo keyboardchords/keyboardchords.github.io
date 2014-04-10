@@ -32,12 +32,15 @@
 </head>
 <body>
     
-<div data-role="dialog" id="chord-of-the-day" data-width="30px">
+<div data-role="dialog" id="chord-of-the-day">
     <div class="bg"></div>
     <div data-role="content">
         <a href="#main" class="close"></a>
         Chord of the day: <br><br><br>
-        <a id="today_chord"></a>
+        <a id="today_chord"></a><br><br>
+        <div style="text-align: right;" class="show_cotd">
+            Show on startup: <input type="checkbox" id="cotd_startup">
+        </div>
     </div>
 </div>
 
@@ -47,7 +50,6 @@
             <menu type="toolbar">
                 <a href="#about"><span class="icon settings-icon aboutphone">about</span></a>
             </menu>
-            <a href="#drawer" class="menu-button"><span class="icon icon-menu">show sidebar</span></a>
             <h1>Music Chords</h1>   
         </header>
     </section>
@@ -107,6 +109,9 @@
               <tr>
                   <td></td>
                   <td><br><button id="btnShowChord">Show</button></td>
+              </tr>
+              <tr>
+                  <td colspan="2"><br><a href="#chord-of-the-day">Show chord of the day.</a></td>
               </tr>
           </table>
           </fieldset>

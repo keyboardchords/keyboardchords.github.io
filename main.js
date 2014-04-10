@@ -97,20 +97,6 @@ function update_chord(evt) {
 function changeView(view_id) {
     if (view_id == "chord-of-the-day") return;
     
-    if (document.body.clientWidth < 800) {
-        if (view_id == "drawer") 
-            document.getElementById('drawer').style.width = '';
-        else 
-            document.getElementById('drawer').style.width = '0px';
-    }
-    if (view_id == "drawer") {
-        /*document.getElementById('drawer').style.width = '';*/
-        document.querySelector('.menu-button').href = "javascript:history.go(-1);";
-        return;
-    } else {
-        /*document.getElementById('drawer').style.width = '0px';*/
-        document.querySelector('.menu-button').href = "#drawer";
-    }
     var views = document.querySelectorAll("[data-role=page]");
     var unknown_view = true;
     var i;
@@ -137,10 +123,20 @@ document.addEventListener("DOMContentLoaded", function () {
     if (hash[0] == "#") {
         hash = window.location.hash.substring(1);
     }
+    
+    var show_cotd = false;
+    if (localStorage["show_cotd"] === "true" ||
+            localStorage["show_cotd"] === undefined) {
+            show_cotd = true;
+    }
+    
     if (hash != "") {
         changeView(hash);
     } else {
         changeView("main");
+        if (show_cotd) {
+            window.location.hash = "#chord-of-the-day";
+        }
     }
     
     var ids = ["chord_root", "chord_sharp", "chord_flat", "chord_scale", "chord_ext"];
@@ -158,6 +154,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var chord_link = document.getElementById("today_chord");
     chord_link.href = "#" + rnd_chord;
     chord_link.innerHTML = rnd_chord;
+    
+    if (show_cotd) {
+        document.getElementById("cotd_startup").checked = true;
+    }
+    
+    document.getElementById("cotd_startup").addEventListener("click", function () {
+        localStorage["show_cotd"] = this.checked;
+    });
     
     update_chord();
 });
