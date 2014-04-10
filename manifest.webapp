@@ -1,6 +1,6 @@
 {
   "name": "Music Chords",
-  "description": "Show the notes of each chord in the keyboard.",
+  "description": "Show the notes of each chord in the keyboard. Supports both major and minor scales.",
   "launch_path": "/",
   "icons": {
     "128": "/icons/icon_128.png",

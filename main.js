@@ -110,6 +110,10 @@ function changeView(view_id) {
     if (unknown_view) {
         document.getElementById("chord").style.display = "inline-block";
         showChord(view_id);
+        var like_str = "//www.facebook.com/plugins/like.php?";
+        like_str += "href=" + encodeURIComponent("http://keyboardchords.github.io/#" + view_id);
+        like_str += "&amp;width&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80";
+        document.getElementById("fb_share1").src = like_str;
     } else {
         document.getElementById(view_id).style.display = "inline-block";
         document.title = document.getElementById(view_id).getAttribute("data-title");
