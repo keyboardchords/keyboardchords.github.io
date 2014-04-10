@@ -70,6 +70,37 @@ Chord.rootsN    = [0, 2, 4, 5, 7, 9, 11];
 Chord.qualities = ["M", "m", "+", "o"];
 Chord.sharpFlat = ["#", "b"]
 
+seed = 1;
+function random() {
+    var x = Math.sin(seed++) * 10000;
+    return x - Math.floor(x);
+}
+
+function randomChord() {
+	/* seed based on the current day */
+	var today = new Date();
+	var today_0_hour = new Date(1970, today.getMonth(), today.getDate());
+	seed = today_0_hour.getTime()/1000; /* trick to work in IE9 mobile */
+	
+	var chord = "";
+	var idx = Math.floor(random() * Chord.roots.length);
+	
+	chord += Chord.roots[idx];
+	
+	var r = Math.floor(random() * 4);
+	if (r < 2) chord += "";
+	else if (r < 3) chord += "#";
+	else chord += "b";
+	
+	r = Math.floor(random() * 6);
+	if (r < 2) chord += "";
+	else if (r < 4) chord += "m";
+	else if (r < 5) chord += '+';
+	else chord += 'o';
+		
+	return chord;
+}
+
 chordIdx = function(chordString) {
 	// Clean string
 	chordString = chordString.trim();
